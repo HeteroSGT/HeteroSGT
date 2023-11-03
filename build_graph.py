@@ -38,7 +38,9 @@ def build_graph(dataset,hiddenSize):
     news2entity, news2entity_ = load_edge(dataset,'entity')
    
     news2topic, news2topic_ = load_edge(dataset,'topic')
-     
+
+    news2news, news2news_ = load_edge(dataset,'news')
+    
     df_news = pd.read_excel(f'../Data/{dataset}/news_final.xlsx')
     label = df_news['label'].tolist()
     
@@ -53,8 +55,7 @@ def build_graph(dataset,hiddenSize):
 
     data['news', 'belongs', 'topic'].edge_index = torch.tensor(news2topic, dtype=torch.long).t().contiguous()
     data['topic', 'belongs_1', 'news'].edge_index = torch.tensor(news2topic_, dtype=torch.long).t().contiguous()
-
-    news2news, news2news_ = load_edge(dataset,'news')
+    
     data['news', 'links', 'news'].edge_index = torch.tensor(news2news, dtype=torch.long).t().contiguous()
     data['news', 'links_', 'news'].edge_index = torch.tensor(news2news_, dtype=torch.long).t().contiguous()
 
