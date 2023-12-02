@@ -35,7 +35,7 @@ def arg_parser():
     parser.add_argument('--num_layers', type=int, default=5, help="num_layers")
     parser.add_argument('--case2', type=str, default="no", help="yes or no for case study II")
     parser.add_argument('--case3', type=str, default="h0", help="h0, mean, or max for case study III")
-    parser.add_argument('--restart', type=float, default=0.0, help=" probability of restarts in rw")
+    parser.add_argument('--restart', type=float, default=0.1, help=" probability of restarts in rw")
     parser.add_argument('--topn', type=int, default=3, help=" num_topics each news linked to")
     args = parser.parse_args()
     return args
